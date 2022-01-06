@@ -6,8 +6,8 @@ const Menu = styled(motion.div)`
   width: 250px;
   height: 350px;
   position: relative;
-  top: 50px;
-  left: 100px;
+  top: 25px;
+  left: 50px;
   transform-origin: center top;
   background: rgba( 0, 153, 102, 0.5 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );

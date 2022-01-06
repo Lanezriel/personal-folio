@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { enableSensor } from '../utils/phone-sensor';
 
+import Burger from './burger/Burger';
 import SwingingMenu from './swinging-menu/SwingingMenu';
 
 import topBarTexture from '../assets/textures/Portfolio-top-bar.png';
@@ -45,6 +46,8 @@ const TopBarButton = styled.div`
   padding: .5em .75em;
   font-weight: bold;
   cursor: pointer;
+  min-width: 25px;
+  transition: all .3s linear;
 
   &:hover {
     box-shadow: inset 3px 3px 5px rgba( 0, 0, 0, .75 );
@@ -61,40 +64,14 @@ const TopBarButton = styled.div`
   }
 `;
 
-const MenuToggler = styled.div`
-  border-radius: 5px;
-  padding: .5em;
-  background: #999;
-  font-weight: bold;
-  cursor: pointer;
-
-  &:hover {
-    background: #888888;
-  }
-`;
-
-const SensorEnabler = styled.div`
-  padding: .5em;
-  cursor: pointer;
-  background: #999;
-  font-weight: bold;
-  border-radius: 5px;
-
-  &:hover {
-    background: #888;
-  }
-`;
-
-function FrontView() {
+const FrontView = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   return (
     <FrontViewWrapper>
       <TopBar>
         <TopBarContent>
-          <TopBarButton onClick={() => setMenuVisible(!menuVisible)} className={menuVisible && "active"}>
-            {menuVisible ? 'X' : 'O'}
-          </TopBarButton>
+          <Burger open={menuVisible} setOpen={setMenuVisible} />
           <TopBarButton onClick={enableSensor}>
             Enable sensor
           </TopBarButton>
