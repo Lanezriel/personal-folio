@@ -4,8 +4,8 @@ export const StyledBurger = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   background: transparent;
   border: none;
   border-radius: 10px;
@@ -21,8 +21,8 @@ export const StyledBurger = styled.div`
   }
 
   div {
-    width: 2.5rem;
-    height: .3rem;
+    width: 2rem;
+    height: .25rem;
     background: white;
     border-radius: 10px;
     transition: all .3s linear;
