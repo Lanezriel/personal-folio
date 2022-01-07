@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { enableSensor } from '../utils/phone-sensor';
 
@@ -83,13 +83,17 @@ const FrontView = () => {
       });
   }
 
+  useEffect(() => {
+    checkSensor();
+  }, []);
+
   return (
     <FrontViewWrapper>
       <TopBar>
         <TopBarContent>
           <Burger open={menuVisible} setOpen={setMenuVisible} />
         </TopBarContent>
-        {sensorActive &&
+        {!sensorActive &&
           <TopBarContent>
             <TopBarButton onClick={checkSensor}>
               Enable sensor
