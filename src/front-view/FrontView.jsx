@@ -67,6 +67,21 @@ const TopBarButton = styled.div`
 
 const FrontView = () => {
   const [menuVisible, setMenuVisible] = useState(false);
+  const [sensorActive, setSensorActive] = useState(false);
+
+  const checkSensor = () => {
+    enableSensor()
+      .then(res => {
+        if (res === 'RELOAD') {
+          window.location.reload(true);
+        } else {
+          setSensorActive(true);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
 
   return (
     <FrontViewWrapper>
@@ -74,11 +89,13 @@ const FrontView = () => {
         <TopBarContent>
           <Burger open={menuVisible} setOpen={setMenuVisible} />
         </TopBarContent>
-        <TopBarContent>
-          <TopBarButton onClick={enableSensor}>
-            Enable sensor
-          </TopBarButton>
-        </TopBarContent>
+        {sensorActive &&
+          <TopBarContent>
+            <TopBarButton onClick={checkSensor}>
+              Enable sensor
+            </TopBarButton>
+          </TopBarContent>
+        }
       </TopBar>
       <SwingingMenu isVisible={menuVisible} />
     </FrontViewWrapper>
