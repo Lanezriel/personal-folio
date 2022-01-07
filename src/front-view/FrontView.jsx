@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { enableOrientationSensor } from '../utils/phone-sensor';
+import { enableMotionSensor, enableOrientationSensor } from '../utils/phone-sensor';
 
 import Burger from './burger/Burger';
 import SwingingMenu from './swinging-menu/SwingingMenu';
@@ -67,12 +67,24 @@ const TopBarButton = styled.div`
 const FrontView = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
+  const enableSensor = () => {
+    enableMotionSensor().then(
+      enableOrientationSensor().then(
+        console.log('Access granted')
+      ).catch((e) => {
+        console.error(e);
+      })
+    ).catch((e) => {
+      console.error(e);
+    });
+  };
+
   return (
     <FrontViewWrapper>
       <TopBar>
         <TopBarContent>
           <Burger open={menuVisible} setOpen={setMenuVisible} />
-          <TopBarButton onClick={enableOrientationSensor}>
+          <TopBarButton onClick={enableSensor}>
             Enable sensor
           </TopBarButton>
         </TopBarContent>
