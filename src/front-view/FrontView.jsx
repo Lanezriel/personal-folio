@@ -18,6 +18,7 @@ const FrontViewWrapper = styled.div`
 
 const TopBar = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 110px;
   position: sticky;
@@ -32,7 +33,7 @@ const TopBarContent = styled.div`
   align-items: center;
   gap: 1em;
   margin: 0 1em;
-  width: 100%;
+  /* width: 100%; */
   height: 70px;
 `;
 
@@ -72,6 +73,8 @@ const FrontView = () => {
       <TopBar>
         <TopBarContent>
           <Burger open={menuVisible} setOpen={setMenuVisible} />
+        </TopBarContent>
+        <TopBarContent>
           <TopBarButton onClick={enableSensor}>
             Enable sensor
           </TopBarButton>
