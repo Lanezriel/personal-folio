@@ -69,11 +69,11 @@ const FrontView = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [sensorActive, setSensorActive] = useState(false);
 
-  const checkSensor = () => {
+  const checkSensor = (userTriggered = false) => {
     enableSensor()
       .then(res => {
-        if (res === 'RELOAD') {
-          alert('After granting acces, you should reload the page in order for the sensor to work properly.')
+        if (res === 'RELOAD' && userTriggered) {
+          window.location.reload(true);
         }
 
         setSensorActive(true);
@@ -95,7 +95,7 @@ const FrontView = () => {
         </TopBarContent>
         {!sensorActive &&
           <TopBarContent>
-            <TopBarButton onClick={checkSensor}>
+            <TopBarButton onClick={() => checkSensor(true)}>
               Enable sensor
             </TopBarButton>
           </TopBarContent>
