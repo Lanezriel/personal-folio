@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { enableSensor } from '../utils/phone-sensor';
+import { enableOrientationSensor } from '../utils/phone-sensor';
 
 import Burger from './burger/Burger';
 import SwingingMenu from './swinging-menu/SwingingMenu';
@@ -72,7 +72,7 @@ const FrontView = () => {
       <TopBar>
         <TopBarContent>
           <Burger open={menuVisible} setOpen={setMenuVisible} />
-          <TopBarButton onClick={enableSensor}>
+          <TopBarButton onClick={enableOrientationSensor}>
             Enable sensor
           </TopBarButton>
         </TopBarContent>
