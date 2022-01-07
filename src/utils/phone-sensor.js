@@ -16,3 +16,10 @@ export function enableSensor() {
     }
   });
 }
+
+export function iOSSafari() {
+  const ua = window.navigator.userAgent;
+  const iOS = !!ua.match(/iP(ad|hone)/i);
+  const webkit = !!ua.match(/WebKit/i);
+  return iOS && webkit && !ua.match(/(CriOS|OPiOS)/i);
+}

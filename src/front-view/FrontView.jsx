@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { enableSensor } from '../utils/phone-sensor';
+import { enableSensor, iOSSafari } from '../utils/phone-sensor';
 
 import Burger from './burger/Burger';
 import SwingingMenu from './swinging-menu/SwingingMenu';
@@ -93,10 +93,10 @@ const FrontView = () => {
         <TopBarContent>
           <Burger open={menuVisible} setOpen={setMenuVisible} />
         </TopBarContent>
-        {!sensorActive &&
+        {(!sensorActive || iOSSafari()) &&
           <TopBarContent>
             <TopBarButton onClick={() => checkSensor(true)}>
-              Enable sensor
+              {sensorActive ? 'Reset sensor' : 'Enable sensor'}
             </TopBarButton>
           </TopBarContent>
         }
