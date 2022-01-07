@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { enableSensor, iOSSafari } from '../utils/phone-sensor';
 
-import Burger from './burger/Burger';
+import Burger from '../components/burger/Burger';
 import SwingingMenu from './swinging-menu/SwingingMenu';
 
 import topBarTexture from '../assets/textures/Portfolio-top-bar.png';
+import { Link } from 'react-router-dom';
 
 const FrontViewWrapper = styled.div`
   position: absolute;
@@ -35,6 +36,20 @@ const TopBarContent = styled.div`
   margin: 0 1em;
   /* width: 100%; */
   height: 70px;
+`;
+
+const StyledLink = styled(Link)`
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  text-decoration: none;
+  color: white;
+  text-shadow: 3px 3px 2px black;
+  transition: all .3s linear;
+
+  &:hover {
+    color: #999;
+  }
 `;
 
 const TopBarButton = styled.div`
@@ -93,13 +108,18 @@ const FrontView = () => {
         <TopBarContent>
           <Burger open={menuVisible} setOpen={setMenuVisible} />
         </TopBarContent>
+        <TopBarContent>
+          <StyledLink to='/'>Home</StyledLink>
+          <StyledLink to='/experience'>Experience</StyledLink>
+          <StyledLink to='/contact'>Contact</StyledLink>
+        </TopBarContent>
+        <TopBarContent>
         {(!sensorActive || iOSSafari()) &&
-          <TopBarContent>
-            <TopBarButton onClick={() => checkSensor(true)}>
-              {sensorActive ? 'Reset sensor' : 'Enable sensor'}
-            </TopBarButton>
-          </TopBarContent>
+          <TopBarButton onClick={() => checkSensor(true)}>
+            {sensorActive ? 'Reset sensor' : 'Enable sensor'}
+          </TopBarButton>
         }
+        </TopBarContent>
       </TopBar>
       <SwingingMenu isVisible={menuVisible} />
     </FrontViewWrapper>
