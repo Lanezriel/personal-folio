@@ -73,10 +73,10 @@ const FrontView = () => {
     enableSensor()
       .then(res => {
         if (res === 'RELOAD') {
-          window.location.reload(true);
-        } else {
-          setSensorActive(true);
+          alert('After granting acces, you should reload the page in order for the sensor to work properly.')
         }
+
+        setSensorActive(true);
       })
       .catch(err => {
         console.error(err);
