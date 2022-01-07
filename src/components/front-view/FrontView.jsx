@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { enableSensor, iOSSafari } from '../../utils/phone-sensor';
 
 import { StyledFrontView } from './FrontView.styled';
 
 import TopBar from './top-bar/TopBar';
 import SwingingMenu from './swinging-menu/SwingingMenu';
+import MobileMenu from '../mobile-menu/MobileMenu';
 
 const FrontView = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [sensorActive, setSensorActive] = useState(false);
   const [isIOSSafari, setIsIOSSafari] = useState(false);
+
+  const isSmallScreen = useMediaQuery({maxWidth: 768})
 
   const checkSensor = (userTriggered = false) => {
     enableSensor()
@@ -38,8 +42,13 @@ const FrontView = () => {
         checkSensor={checkSensor}
         sensorActive={sensorActive}
         isIOSSafari={isIOSSafari}
+        isSmallScreen={isSmallScreen}
       />
-      <SwingingMenu isVisible={menuVisible} />
+      {isSmallScreen ? (
+        <MobileMenu isVisible={menuVisible} />
+      ) : (
+        <SwingingMenu isVisible={menuVisible} />
+      )}
     </StyledFrontView>
   );
 }

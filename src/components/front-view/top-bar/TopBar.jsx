@@ -6,17 +6,26 @@ import { StyledTopBar } from './TopBar.styled';
 
 import Burger from '../../burger/Burger';
 
-const TopBar = ({ menuVisible, setMenuVisible, checkSensor, sensorActive, isIOSSafari }) => {
+const TopBar = ({
+  menuVisible,
+  setMenuVisible,
+  checkSensor,
+  sensorActive,
+  isIOSSafari,
+  isSmallScreen,
+}) => {
   return (
     <StyledTopBar>
       <div className="burger">
         <Burger open={menuVisible} setOpen={setMenuVisible} />
       </div>
-      <div className="top-bar-content">
-        <Link to='/'>Home</Link>
-        <Link to='/experience'>Experience</Link>
-        <Link to='/contact'>Contact</Link>
-      </div>
+      {!isSmallScreen && 
+        <div className="top-bar-content">
+          <Link to='/'>Home</Link>
+          <Link to='/experience'>Experience</Link>
+          <Link to='/contact'>Contact</Link>
+        </div>
+      }
       {(!sensorActive || isIOSSafari) &&
         <div className="special-button" onClick={checkSensor}>
           {sensorActive ? 'Reset sensor' : 'Enable sensor'}
@@ -32,6 +41,7 @@ TopBar.propTypes = {
   checkSensor: PropTypes.func.isRequired,
   sensorActive: PropTypes.bool.isRequired,
   isIOSSafari: PropTypes.bool.isRequired,
+  isSmallScreen: PropTypes.bool.isRequired,
 };
 
 export default TopBar;
