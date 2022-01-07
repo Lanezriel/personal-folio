@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import FrontView from './front-view/FrontView';
+import FrontView from './components/front-view/FrontView';
 import Router from './views/Router';
 
 function App() {

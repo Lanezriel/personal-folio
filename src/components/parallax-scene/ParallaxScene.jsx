@@ -28,7 +28,9 @@ const ParallaxScene = ({ children }) => {
 }
 
 ParallaxScene.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element, PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired,
 };
 
 export default ParallaxScene;
