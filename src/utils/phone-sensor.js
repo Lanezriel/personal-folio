@@ -3,7 +3,7 @@ export function enableSensor() {
     if (DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === "function") {
       DeviceMotionEvent.requestPermission().then(permissionState => {
         if (permissionState === "granted") {
-          resolve();
+          resolve(window.location.reload(true));
         } else {
           reject(new Error("permission denied"));
         }
@@ -12,7 +12,7 @@ export function enableSensor() {
         reject(e);
       });
     } else {
-      resolve();
+      resolve(alert('No need to grant access.'));
     }
   });
 }
