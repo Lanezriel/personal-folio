@@ -17,5 +17,14 @@ export const StyledMobileMenu = styled.div`
     transition: all .3s ease-in-out;
     opacity: ${ ({ open }) => open ? '1' : '0' };
     transform: ${ ({ open }) => open ? 'translateY(0)' : 'translateY(100%)'};
+
+    & > .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-height: 400px;
+      overflow-y: scroll;
+    }
   }
 `;

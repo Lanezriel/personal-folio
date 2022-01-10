@@ -8,12 +8,15 @@ const MobileMenu = ({ isVisible }) => {
     <StyledMobileMenu open={isVisible}>
       <div className="wrapper">
         <h1>I'm the menu</h1>
-        <p>Line 1</p>
-        <p>Line 2</p>
-        <p>Line 3</p>
-        <p>Line 4</p>
-        <p>Line 5</p>
-        <p>Line 6</p>
+        <div className="content">
+          <h2>Line 1</h2>
+          <h2>Line 2</h2>
+          <h2>Line 3</h2>
+          <h2>Line 4</h2>
+          <h2>Line 5</h2>
+          <h2>Line 6</h2>
+          <h2>Line 7</h2>
+        </div>
       </div>
     </StyledMobileMenu>
   );
